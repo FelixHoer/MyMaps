@@ -1,0 +1,211 @@
+html,body,#container {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+}
+
+.ui-widget {
+	font-size: 10pt;
+}
+
+.ui-dialog-content,.ui-dialog-buttonpane {
+	border: none;
+}
+
+div.ui-dialog {
+	position: absolute;
+	padding: 2px;
+	margin: 10px;
+}
+
+.ui-dialog-titlebar {
+	padding: 3px;
+}
+
+.ui-dialog-titlebar .ui-dialog-titlebar-close {
+	display: none;
+}
+
+.ui-resizable-handle {
+	float: right;
+	margin-top: -16px;
+}
+
+.ui-dialog textarea {
+	width: 394px;
+	height: 342px;
+	margin-top: 3px;
+}
+
+#map {
+	height: 100%;
+	width: 100%;
+}
+
+.hidden {
+	display: none;
+}
+
+#tree {
+	height: 100%;
+	overflow: scroll;
+}
+
+#tree ul {
+	list-style-type: none;
+	margin: 0;
+	margin-left: 16px;
+	padding: 0;
+}
+
+#tree li {
+	margin-left: 16px;
+}
+
+#tree span {
+	cursor: pointer;
+	padding: 0 4px;
+}
+
+#tree span.selected {
+	background-color: rgba(46, 131, 255, .2);
+	border-radius: 5px;
+}
+
+#tree span:hover {
+	color: rgba(46, 131, 255, 1);
+}
+
+#tree span input {
+	width: 50%;
+	background-color: rgba(46, 131, 255, .2);
+	font-size: 1em;
+	border: none;
+}
+
+#tree a {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-color: transparent;
+	background-image: url(images/ui-icons_2e83ff_256x240.png);
+	opacity: .6;
+}
+
+#tree a:hover {
+	background-image: url(images/ui-icons_222222_256x240.png);
+	opacity: 1;
+}
+
+#tree a.visible,#tree a.visible.true {
+	background-position: -80px -142px;
+}
+
+#tree a.visible.false {
+	background-position: -112px -142px;
+}
+
+#tree a.open,#tree a.open.true {
+	background-position: -64px -14px;
+}
+
+#tree a.open.false {
+	background-position: -32px -14px;
+}
+
+#tree a.delete {
+	background-position: -80px -125px;
+}
+
+.waypoints {
+	counter-reset: wps;
+}
+
+.waypoints span:after {
+	content: "wp #" counter(wps);
+	counter-increment: wps;
+}
+
+#actions {
+	position: absolute;
+	width: 100%;
+}
+
+#buttonset {
+	width: 96px;
+	padding: 5px;
+	margin: 0 auto;
+}
+
+#buttonset a {
+	display: inline-block;
+	padding: 3px;
+}
+
+#buttonset .selected {
+	border: 1px solid #2e83ff;
+	background: rgba(46, 131, 255, .6) none 50% 50% repeat-x;
+}
+
+#buttonset .marker-icon,#buttonset .layer-icon,.polyline-icon {
+	width: 24px;
+	height: 24px;
+}
+
+#buttonset .marker-icon {
+	background-image: url(images/marker.png);
+}
+
+#buttonset .layer-icon {
+	background-image: url(images/layers.png);
+}
+
+#buttonset .polyline-icon {
+	background-image: url(images/polyline.png);
+}
+
+.marker-cursor {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	margin: -28px 0 0 -12px;
+	background-image: url(images/marker.png);
+}
+
+.waypoint-cursor {
+	position: absolute;
+	width: 11px;
+	height: 11px;
+	margin: -15px 0 0 -6px;
+	background-image: url(images/dot.png);
+}
+
+.infobox input {
+	font-size: 11pt;
+	margin: 1px;
+	border: none;
+}
+
+.infobox input:hover {
+	margin: 0px;
+	border: 1px solid #2e83ff;
+}
+
+.infobox input[placeholder="name"] {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.infobox table {
+	margin-top: 10px;
+}
+
+.save {
+	float: right;
+	display: block;
+	width: 16px;
+	height: 16px;
+	background-image: url(images/ui-icons_222222_256x240.png);
+	background-position: -128px -192px;
+}
