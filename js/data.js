@@ -1,6 +1,8 @@
 /*
+	
+	data = layer
 
-	component: 
+	component: is abstrace
 	  type: predefined string (layer | marker | polyline | ...)
 	  name: string
 	  visible: boolean (if undefined assumed true)
@@ -28,5 +30,6 @@
 var data = {
   type: 'layer',
   name: 'root',
-  items: []
+  items: [],
+  removeable: false
 };

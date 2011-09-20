@@ -70,7 +70,7 @@ $(function(){
 		dialogClass: 'sidebar', 
 		title: 'Layers', 
 		position: ['left', 'center'],
-		width: 300, 
+		width: 220, 
 		height: 400
 	});
 

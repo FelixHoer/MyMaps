@@ -7,7 +7,8 @@ MM.component = function(){
 	var data = MM.properties({
 		type: null,
 		name: 'unspecified',
-		visible: true
+		visible: true,
+		removeable: true
 	});
 
 	var appendTo = function(par, position){
@@ -93,15 +94,17 @@ MM.property = function(initValue, changeListeners){
 
 	var addChangeListener = function(listener){
 		listeners.push(listener);
+		return function(){
+			removeChangeListener(listener);
+		};
 	};
 
 	var removeChangeListener = function(listener){
-		var index = null;
-		for(var i = 0; i < listeners.length; i++)
+		for(var i = 0; i < listeners.length; )
 			if(listener === listeners[i])
-				index = i;
-		if(index !== null)
-			listeners.splice(i, 1);
+				listeners.splice(i, 1);
+			else
+				i++;
 	};
 
 	return {

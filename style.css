@@ -1,4 +1,6 @@
-html,body,#container {
+html, 
+body, 
+#container {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
@@ -9,7 +11,8 @@ html,body,#container {
 	font-size: 10pt;
 }
 
-.ui-dialog-content,.ui-dialog-buttonpane {
+.ui-dialog-content, 
+.ui-dialog-buttonpane {
 	border: none;
 }
 
@@ -21,6 +24,7 @@ div.ui-dialog {
 
 .ui-dialog-titlebar {
 	padding: 3px;
+	margin-bottom: 2px;
 }
 
 .ui-dialog-titlebar .ui-dialog-titlebar-close {
@@ -98,25 +102,15 @@ div.ui-dialog {
 	opacity: 1;
 }
 
-#tree a.visible,#tree a.visible.true {
-	background-position: -80px -142px;
-}
+#tree a.visible, 
+#tree a.visible.true { background-position: -80px -142px; }
+#tree a.visible.false { background-position: -112px -142px; }
 
-#tree a.visible.false {
-	background-position: -112px -142px;
-}
+#tree a.open, 
+#tree a.open.true { background-position: -64px -14px; }
+#tree a.open.false { background-position: -32px -14px; }
 
-#tree a.open,#tree a.open.true {
-	background-position: -64px -14px;
-}
-
-#tree a.open.false {
-	background-position: -32px -14px;
-}
-
-#tree a.delete {
-	background-position: -80px -125px;
-}
+#tree a.delete { background-position: -80px -125px; }
 
 .waypoints {
 	counter-reset: wps;
@@ -148,22 +142,18 @@ div.ui-dialog {
 	background: rgba(46, 131, 255, .6) none 50% 50% repeat-x;
 }
 
-#buttonset .marker-icon,#buttonset .layer-icon,.polyline-icon {
+#buttonset .marker-icon,
+#buttonset .layer-icon,
+.polyline-icon {
 	width: 24px;
 	height: 24px;
 }
 
-#buttonset .marker-icon {
-	background-image: url(images/marker.png);
-}
+#buttonset .marker-icon { background-image: url(images/marker.png); }
 
-#buttonset .layer-icon {
-	background-image: url(images/layers.png);
-}
+#buttonset .layer-icon { background-image: url(images/layers.png); }
 
-#buttonset .polyline-icon {
-	background-image: url(images/polyline.png);
-}
+#buttonset .polyline-icon { background-image: url(images/polyline.png); }
 
 .marker-cursor {
 	position: absolute;
