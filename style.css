@@ -193,23 +193,21 @@ div.ui-dialog {
 
 .save {
 	float: right;
-	display: block;
-	width: 16px;
-	height: 16px;
-	background-image: url(images/ui-icons_222222_256x240.png);
-	background-position: -128px -192px;
 }
 
-#load-dialog ul{
+#load-dialog ul,
+#save-dialog ul{
   padding: 0;
   margin: 0;
 }
-#load-dialog li{
+#load-dialog li,
+#save-dialog li{
   list-style-type: none;
   position: relative;
   margin: 15px;
 }
-#load-dialog li a{
+#load-dialog li a,
+#save-dialog li a{
   display: block;
   line-height: 48px;
   height: 48px;
@@ -220,11 +218,15 @@ div.ui-dialog {
 #load-new{
   background-image: url(images/empty.png); 
 }
-#load-json{
+#load-json,
+#save-json{
   background-image: url(images/json.png); 
 }
 #load-upload{
   background-image: url(images/upload.png); 
+}
+#save-download{
+  background-image: url(images/download.png); 
 }
 #load-file{
   position: absolute;

@@ -72,20 +72,6 @@
 		</table>
 	</script>
 
-	<script id="jsonExportTemplate" type="text/x-jquery-tmpl"> 
-		<div>
-			Copy&amp;Paste the JSON-data below to a file. (Ctrl-A, Ctrl-C)
-			<textarea>${json}</textarea>
-		</div>
-	</script>
-
-	<script id="jsonImportTemplate" type="text/x-jquery-tmpl"> 
-		<div>
-			Copy&amp;Paste the JSON-data to the textarea below.
-			<textarea></textarea>
-		</div>
-	</script>
-
 	<script id="loadTemplate" type="text/x-jquery-tmpl"> 
 		<div id="load-dialog">
 		  <ul>
@@ -95,6 +81,29 @@
 			</ul>
 		</div>
 	</script>
+
+  <script id="jsonImportTemplate" type="text/x-jquery-tmpl"> 
+    <div>
+      Copy&amp;Paste the JSON-data to the textarea below.
+      <textarea></textarea>
+    </div>
+  </script>
+
+  <script id="saveTemplate" type="text/x-jquery-tmpl"> 
+    <div id="save-dialog">
+      <ul>
+        <li><a id="save-json" href="#">Copy&amp;Paste JSON</a></li>
+        <li><a id="save-download" href="#">Download JSON</a></li>
+      </ul>
+    </div>
+  </script>
+
+  <script id="jsonExportTemplate" type="text/x-jquery-tmpl"> 
+    <div>
+      Copy&amp;Paste the JSON-data below to a file. (Ctrl-A, Ctrl-C)
+      <textarea>${json}</textarea>
+    </div>
+  </script>
 
 	<script id="barTemplate" type="text/x-jquery-tmpl"> 
 		<div id="bar">

@@ -1,6 +1,6 @@
 
-// TODO upload: find icon, check if possible (html5)
-// TODO save/download: 1 icon + text in top bar, menu to choose "display json", "download json" (if possible)
+// TODO upload: check if possible (html5)
+// TODO download: check if download is possible
 
 var MM = (function(){
   
@@ -43,54 +43,78 @@ var MM = (function(){
 	};
 	
 	var createJSONExport = function(){
-		var createJSON = function(){
-			var json = JSON.stringify(MM.data.tree.getRoot().data.toObj());
-			json = json.replace(/(\[|\{)/g, '$1\n');
-			json = json.replace(/(\]|\})/g, '\n$1');
-			json = json.replace(/,"/g, ',\n"');
-			return json;
+		
+		var displaySaveDialog = function(){
+		  
+	    var createJSON = function(){
+	      var json = JSON.stringify(MM.data.tree.getRoot().data.toObj());
+	      json = json.replace(/(\[|\{)/g, '$1\n');
+	      json = json.replace(/(\]|\})/g, '\n$1');
+	      json = json.replace(/,"/g, ',\n"');
+	      return json;
+	    };
+	    
+	    var displayJSON = function(json){
+	      $('#jsonExportTemplate').tmpl({ json: json }).dialog({
+	        dialogClass: 'json-modal',
+	        width: 400, 
+	        modal: true,
+	        resizable: false,
+	        title: 'JSON-Data',
+	        buttons: {
+	          Ok: function() {
+	            $(this).dialog('destroy');
+	            $(this).remove();
+	            closeSaveDialog();
+	          }
+	        }
+	      });
+	    };
+	    
+	    var closeSaveDialog = function(){
+	      $(saveDialog).dialog('destroy');
+        $(saveDialog).remove();
+	    };
+	    
+		  var saveDialog = $('#saveTemplate').tmpl().dialog({
+	      title: 'Save Map', 
+	      width: 400, 
+	      height: 250,
+	      modal: true,
+	      resizable: false,
+        buttons: {
+          Cancel: closeSaveDialog
+        }
+	    });
+		  
+		  $('#save-json').click(function(){
+        displayJSON(createJSON());
+        return false;
+      });
+		  
+		  $('#save-download').click(function(){
+        var uri = 'data:application/octet-stream,' + encodeURIComponent(createJSON());
+        var newWindow = window.open(uri);
+        newWindow.close();
+        closeSaveDialog();
+        return false;
+      });
 		};
+    
+    var saveButton = $('<a>Save</a>')
+      .attr('href', '#')
+      .addClass('save')
+      .click(function(){
+        displaySaveDialog();
+        return false;
+      });
 		
-		var displayJSON = function(json){
-			$('#jsonExportTemplate').tmpl({ json: json }).dialog({
-				dialogClass: 'json-modal',
-				width: 400, 
-				modal: true,
-				resizable: false,
-				title: 'JSON-Data',
-				buttons: {
-					Ok: function() {
-						$(this).dialog('destroy');
-						$(this).remove();
-					}
-				}
-			});
-		};
-		
-		var jsonButton = $('<a />')
-			.attr('href', '#')
-			.addClass('save')
-			.click(function(){
-				displayJSON(createJSON());
-				return false;
-			});
-		
-		var downloadButton = $('<a />')
-			.attr('href', '#')
-			.addClass('save')
-			.click(function(){
-				var uri = 'data:application/octet-stream,' + encodeURIComponent(createJSON());
-				var newWindow = window.open(uri);
-				newWindow.close();
-				return false;
-			});
-		
-		$('#bar').parent().find('.ui-dialog-titlebar').append(jsonButton).append(downloadButton);
+		$('#bar').parent().find('.ui-dialog-titlebar').append(saveButton);
 	};
 	
 	var loadData = function(callback){
+	  
 		var loadDialog = $('#loadTemplate').tmpl().dialog({
-			dialogClass: 'sidebar', 
 			title: 'MyMaps', 
 			width: 400, 
 			height: 250,
