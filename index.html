@@ -72,9 +72,36 @@
 		</table>
 	</script>
 
-	<script id="jsonTemplate" type="text/x-jquery-tmpl"> 
+	<script id="jsonExportTemplate" type="text/x-jquery-tmpl"> 
 		<div>
+			Copy&amp;Paste the JSON-data below to a file. (Ctrl-A, Ctrl-C)
 			<textarea>${json}</textarea>
+		</div>
+	</script>
+
+	<script id="jsonImportTemplate" type="text/x-jquery-tmpl"> 
+		<div>
+			Copy&amp;Paste the JSON-data to the textarea below.
+			<textarea></textarea>
+		</div>
+	</script>
+
+	<script id="loadTemplate" type="text/x-jquery-tmpl"> 
+		<div id="load-dialog">
+		  <ul>
+			  <li><a id="load-new" href="#">New Map</a></li>
+			  <li><a id="load-json" href="#">Copy&amp;Paste JSON</a></li>
+			  <li><input id="load-file" type="file" /><a id="load-upload" href="#">Upload JSON</a></li>
+			</ul>
+		</div>
+	</script>
+
+	<script id="barTemplate" type="text/x-jquery-tmpl"> 
+		<div id="bar">
+			<div id="tree"></div>
+			<div id="actions">
+				<div id="buttonset"></div>
+			</div>
 		</div>
 	</script>
 
@@ -83,12 +110,6 @@
 
 	<div id="container">
 		<div id="map"></div>
-		<div id="bar">
-			<div id="tree"></div>
-			<div id="actions">
-				<div id="buttonset"></div>
-			</div>
-		</div>
 	</div>
 
 </body>

@@ -199,3 +199,37 @@ div.ui-dialog {
 	background-image: url(images/ui-icons_222222_256x240.png);
 	background-position: -128px -192px;
 }
+
+#load-dialog ul{
+  padding: 0;
+  margin: 0;
+}
+#load-dialog li{
+  list-style-type: none;
+  position: relative;
+  margin: 15px;
+}
+#load-dialog li a{
+  display: block;
+  line-height: 48px;
+  height: 48px;
+  padding-left: 60px;
+  background-repeat: no-repeat; 
+  vertical-align: center;
+}
+#load-new{
+  background-image: url(images/empty.png); 
+}
+#load-json{
+  background-image: url(images/json.png); 
+}
+#load-upload{
+  background-image: url(images/upload.png); 
+}
+#load-file{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}

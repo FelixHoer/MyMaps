@@ -2,7 +2,7 @@
 	
 	data = layer
 
-	component: is abstrace
+	component: is abstract
 	  type: predefined string (layer | marker | polyline | ...)
 	  name: string
 	  visible: boolean (if undefined assumed true)

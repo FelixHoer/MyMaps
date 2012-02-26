@@ -244,7 +244,7 @@ MM.represent = (function(){
 			addChangeListener('name');
 	
 			for(var key in data)
-				if($.inArray(key, ['name', 'type', 'position', 'visible', 'init', 'toObj']) < 0){
+				if($.inArray(key, ['name', 'type', 'position', 'visible', 'init', 'toObj', 'removeable']) < 0){
 					form.elements[key] = data[key].get();
 					addChangeListener(key);
 				}
