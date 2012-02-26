@@ -1,7 +1,3 @@
-
-// TODO upload: check if possible (html5)
-// TODO download: check if download is possible
-
 var MM = (function(){
   
   var setup = function(){
@@ -95,7 +91,6 @@ var MM = (function(){
 		  $('#save-download').click(function(){
         var uri = 'data:application/octet-stream,' + encodeURIComponent(createJSON());
         var newWindow = window.open(uri);
-        newWindow.close();
         closeSaveDialog();
         return false;
       });
@@ -168,21 +163,40 @@ var MM = (function(){
 			
 		});
 		
+		// for chrome: File-API only works when served by web-server
 		$('#load-file').change(function(evt){
+		  if(!window.File || !window.FileReader || !window.FileList){
+        alert('Error: The File-API is not supported by your browser!');
+        return;
+      }
+		  
+		  if(!evt || !evt.target || !evt.target.files){
+        alert('Error: No File was selected or your browser does not support the File-API.');
+        return;
+		  }
+		  
 			var files = evt.target.files;
 			if(files.length !== 1){
-				alert('Please select one previously generated JSON-File');
+				alert('Please select a previously generated JSON-File');
 				return;
 			}
+			
 			var file = files[0];
 			var reader = new FileReader();
+			
 			reader.onerror = function(e){
 				alert('Error: Can not read selected file.');
 			};
+			
 			reader.onload = function(e){
-				console.log(e);
-				console.log(e.target.result);
+				try{
+          var json = JSON.parse(e.target.result);
+          onComplete(json);
+        }catch(err){
+          alert('the entered data was not valid: ' + err);
+        }
 			};
+			
 			reader.readAsText(file);
 		});
 	};
