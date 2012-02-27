@@ -3,89 +3,89 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-	<title>MyMaps</title>
+  <title>MyMaps</title>
 
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	
-	<!-- style -->
-	
-	<link type="text/css" href="jquery-ui-1.8.9.custom.css" rel="stylesheet" />	
-	<link type="text/css" href="style.css" rel="stylesheet" />	
-	
-	<!-- deps -->
-	
-	<script type="text/javascript" src="js/deps/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="js/deps/jquery-ui-1.8.9.custom.min.js"></script>
-	<script type="text/javascript" src="js/deps/jquery.tmpl.min.js"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="js/deps/json2.js"></script>
-	
-	<!-- app -->
-	
-	<script type="text/javascript" src="js/data.js"></script>
-	<script type="text/javascript" src="js/util.js"></script>
-	<script type="text/javascript" src="js/map.js"></script>
-	<script type="text/javascript" src="js/composite.js"></script>
-	<script type="text/javascript" src="js/tree.js"></script>
-	<script type="text/javascript" src="js/represent.js"></script>
-	<script type="text/javascript" src="js/action.js"></script>
-	
-	<!-- templates -->
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  
+  <!-- style -->
+  
+  <link type="text/css" href="jquery-ui-1.8.9.custom.css" rel="stylesheet" />  
+  <link type="text/css" href="style.css" rel="stylesheet" />  
+  
+  <!-- deps -->
+  
+  <script type="text/javascript" src="js/deps/jquery-1.6.4.min.js"></script>
+  <script type="text/javascript" src="js/deps/jquery-ui-1.8.9.custom.min.js"></script>
+  <script type="text/javascript" src="js/deps/jquery.tmpl.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript" src="js/deps/json2.js"></script>
+  
+  <!-- app -->
+  
+  <script type="text/javascript" src="js/data.js"></script>
+  <script type="text/javascript" src="js/util.js"></script>
+  <script type="text/javascript" src="js/map.js"></script>
+  <script type="text/javascript" src="js/composite.js"></script>
+  <script type="text/javascript" src="js/tree.js"></script>
+  <script type="text/javascript" src="js/represent.js"></script>
+  <script type="text/javascript" src="js/action.js"></script>
+  
+  <!-- templates -->
 
-	<script id="markerTemplate" type="text/x-jquery-tmpl"> 
-		<li>
-			<a class="visible ${visible}" href="#"></a><span>${name}</span><a class="delete" href="#"></a>
-		</li>
-	</script>
-	
-	<script id="layerTemplate" type="text/x-jquery-tmpl"> 
-		<div>
-			<a class="open ${open}" href="#"></a><a class="visible ${visible}" href="#"></a><span>${name}</span><a class="delete" href="#"></a>
-			<ul></ul>
-		</div>
-	</script>
-	
-	<script id="polylineTemplate" type="text/x-jquery-tmpl"> 
-		<div>
-			<a class="open ${open}" href="#"></a><a class="visible ${visible}" href="#"></a><span>${name}</span><a class="delete" href="#"></a>
-			<ul class="waypoints"></ul>
-		</div>
-	</script>
-	
-	<script id="waypointTemplate" type="text/x-jquery-tmpl"> 
-		<li>
-			<span>${name}</span><a class="delete" href="#"></a>
-		</li>
-	</script>
-	
-	<script id="actionTemplate" type="text/x-jquery-tmpl"> 
-		<a href="#" id="${name}-action"></a>
-	</script>
+  <script id="markerTemplate" type="text/x-jquery-tmpl"> 
+    <li>
+      <a class="visible ${visible}" href="#"></a><span>${name}</span><a class="delete" href="#"></a>
+    </li>
+  </script>
+  
+  <script id="layerTemplate" type="text/x-jquery-tmpl"> 
+    <div>
+      <a class="open ${open}" href="#"></a><a class="visible ${visible}" href="#"></a><span>${name}</span><a class="delete" href="#"></a>
+      <ul></ul>
+    </div>
+  </script>
+  
+  <script id="polylineTemplate" type="text/x-jquery-tmpl"> 
+    <div>
+      <a class="open ${open}" href="#"></a><a class="visible ${visible}" href="#"></a><span>${name}</span><a class="delete" href="#"></a>
+      <ul class="waypoints"></ul>
+    </div>
+  </script>
+  
+  <script id="waypointTemplate" type="text/x-jquery-tmpl"> 
+    <li>
+      <span>${name}</span><a class="delete" href="#"></a>
+    </li>
+  </script>
+  
+  <script id="actionTemplate" type="text/x-jquery-tmpl"> 
+    <a href="#" id="${name}-action"></a>
+  </script>
 
-	<script id="infoTemplate" type="text/x-jquery-tmpl"> 
-		<input type="text" value="${name}" placeholder="name" />
-		<table>
-		{{each elements}}
-			<tr>
-				<td>${$index}:</td>
-				<td><input type="text" value="${$value}" placeholder="${$index}" /></td>
-			</tr>
-		{{/each}}
-		</table>
-	</script>
+  <script id="infoTemplate" type="text/x-jquery-tmpl"> 
+    <input type="text" value="${name}" placeholder="name" />
+    <table>
+    {{each elements}}
+      <tr>
+        <td>${$index}:</td>
+        <td><input type="text" value="${$value}" placeholder="${$index}" /></td>
+      </tr>
+    {{/each}}
+    </table>
+  </script>
 
-	<script id="loadTemplate" type="text/x-jquery-tmpl"> 
-		<div id="load-dialog">
-		  <ul>
-			  <li id="load-new"><a href="#">New Map</a></li>
-			  <li id="load-json"><a href="#">Copy&amp;Paste JSON</a></li>
-			  <li id="load-upload">
+  <script id="loadTemplate" type="text/x-jquery-tmpl"> 
+    <div id="load-dialog">
+      <ul>
+        <li id="load-new"><a href="#">New Map</a></li>
+        <li id="load-json"><a href="#">Copy&amp;Paste JSON</a></li>
+        <li id="load-upload">
           <input type="file" />
           <a href="#">Upload JSON (may only work on webserver)</a>
         </li>
-			</ul>
-		</div>
-	</script>
+      </ul>
+    </div>
+  </script>
 
   <script id="jsonImportTemplate" type="text/x-jquery-tmpl"> 
     <div>
@@ -110,21 +110,21 @@
     </div>
   </script>
 
-	<script id="barTemplate" type="text/x-jquery-tmpl"> 
-		<div id="bar">
-			<div id="tree"></div>
-			<div id="actions">
-				<div id="buttonset"></div>
-			</div>
-		</div>
-	</script>
+  <script id="barTemplate" type="text/x-jquery-tmpl"> 
+    <div id="bar">
+      <div id="tree"></div>
+      <div id="actions">
+        <div id="buttonset"></div>
+      </div>
+    </div>
+  </script>
 
 </head>
 <body>
 
-	<div id="container">
-		<div id="map"></div>
-	</div>
+  <div id="container">
+    <div id="map"></div>
+  </div>
 
 </body>
 </html>

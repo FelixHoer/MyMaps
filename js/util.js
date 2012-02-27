@@ -1,61 +1,59 @@
 //add all items from std to "obj", which are not already defined there
 var merge = function(std, obj){
-	obj = obj || {};
+  obj = obj || {};
 
-	for(var key in std)
-		if(!(key in obj))
-			obj[key] = std[key];
-	return obj;
+  for(var key in std)
+    if(!(key in obj))
+      obj[key] = std[key];
+  return obj;
 };
 
 var defaults = function(obj, def){
-	return merge(def, obj);
+  return merge(def, obj);
 };
-
 
 //copy all items from "nu" to "obj", possibly overriding
 var override = function(obj, nu){
-	obj = obj || {};
+  obj = obj || {};
 
-	for(var key in nu)
-		obj[key] = nu[key];
-	return obj;
+  for(var key in nu)
+    obj[key] = nu[key];
+  return obj;
 };
-
 var extend = override;
 
 var combine = function(obj, sec){
-	obj = obj || {};
+  obj = obj || {};
 
-	for(var key in sec)
-		if(isFunction(obj[key]) && isFunction(sec[key]))
-			obj[key] = obj[key].chain(sec[key]);
-		else
-			obj[key] = sec[key];
+  for(var key in sec)
+    if(isFunction(obj[key]) && isFunction(sec[key]))
+      obj[key] = obj[key].chain(sec[key]);
+    else
+      obj[key] = sec[key];
 
-	return obj;
+  return obj;
 };
 
 Function.prototype.chain = function(f){
-	var that = this;
-	return function(){
-		f.apply(null, arguments);
-		that.apply(null, arguments);
-	};
+  var that = this;
+  return function(){
+    f.apply(null, arguments);
+    that.apply(null, arguments);
+  };
 };
 
 var isFunction = function(f){
-	return f && typeof f === "function";
+  return f && typeof f === "function";
 };
 
 var falsy = function(){
-	var chain = arguments;
-	return function(){
-		var func = chain[0];
-		for(var i = 1; i < chain.length; i++)
-			func = func[chain[i]];
+  var chain = arguments;
+  return function(){
+    var func = chain[0];
+    for(var i = 1; i < chain.length; i++)
+      func = func[chain[i]];
 
-		func.apply(this, arguments);
-		return false;
-	};
+    func.apply(this, arguments);
+    return false;
+  };
 };

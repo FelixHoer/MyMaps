@@ -1,29 +1,29 @@
 /*
-	
-	data = layer
+  
+  data = layer
 
-	component: is abstract
-	  type: predefined string (layer | marker | polyline | ...)
-	  name: string
-	  visible: boolean (if undefined assumed true)
-	
-	layer: is a component
-	  items: component[]
-	  open: boolean
-	
-	marker: is a component
-	  position: position
-	  address: string (optional)
-	
-	polyline: is a component
-	  items: waypoint[]
-	
-	waypoint: is a component
-	  position: position
+  component: is abstract
+    type: predefined string (layer | marker | polyline | ...)
+    name: string
+    visible: boolean (if undefined assumed true)
+  
+  layer: is a component
+    items: component[]
+    open: boolean
+  
+  marker: is a component
+    position: position
+    address: string (optional)
+  
+  polyline: is a component
+    items: waypoint[]
+  
+  waypoint: is a component
+    position: position
 
-	position:
-		lat: num
-		lng: num
+  position:
+    lat: num
+    lng: num
 
 */
 
