@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
 	<title>MyMaps</title>
@@ -52,7 +54,7 @@
 	
 	<script id="waypointTemplate" type="text/x-jquery-tmpl"> 
 		<li>
-			<span></span><a class="delete" href="#"></a>
+			<span>${name}</span><a class="delete" href="#"></a>
 		</li>
 	</script>
 	
@@ -75,11 +77,11 @@
 	<script id="loadTemplate" type="text/x-jquery-tmpl"> 
 		<div id="load-dialog">
 		  <ul>
-			  <li><a id="load-new" href="#">New Map</a></li>
-			  <li><a id="load-json" href="#">Copy&amp;Paste JSON</a></li>
-			  <li>
-          <input id="load-file" type="file" />
-          <a id="load-upload" href="#">Upload JSON (may only work on webserver)</a>
+			  <li id="load-new"><a href="#">New Map</a></li>
+			  <li id="load-json"><a href="#">Copy&amp;Paste JSON</a></li>
+			  <li id="load-upload">
+          <input type="file" />
+          <a href="#">Upload JSON (may only work on webserver)</a>
         </li>
 			</ul>
 		</div>
@@ -95,10 +97,8 @@
   <script id="saveTemplate" type="text/x-jquery-tmpl"> 
     <div id="save-dialog">
       <ul>
-        <li><a id="save-json" href="#">Copy&amp;Paste JSON</a></li>
-        <li>
-          <a id="save-download" href="#">Download JSON</a>
-        </li>
+        <li id="save-json"><a href="#">Copy&amp;Paste JSON</a></li>
+        <li id="save-download"><a href="#">Download JSON</a></li>
       </ul>
     </div>
   </script>

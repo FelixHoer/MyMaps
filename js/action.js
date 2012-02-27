@@ -108,6 +108,7 @@ MM.action = (function(){
 					}
 		
 					selected = MM.tree.waypoint({
+					  name: "waypoint",
 						position: {lat: event.latLng.lat(), lng: event.latLng.lng()}
 					});
 					selected.appendTo(parent, position);

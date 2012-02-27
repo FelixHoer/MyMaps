@@ -38,6 +38,12 @@ your favorite web server. You and your users can then point the browser at
   empty.png, json.png, download.png, upload.png
 * [Google Maps](http://maps.google.at/): dot.png, marker.png
 
+# Tested with
+
+* Google Chrome 16.0.912.77
+* Firefox 10.0.2
+* Microsoft Internet Explorer 7
+
 # License
 
 MyMaps is MIT licensed. 

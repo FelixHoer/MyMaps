@@ -73,17 +73,17 @@ div.ui-dialog {
 }
 
 #tree span.selected {
-	background-color: rgba(46, 131, 255, .2);
+	background-color: rgb(213, 240, 255);
 	border-radius: 5px;
 }
 
 #tree span:hover {
-	color: rgba(46, 131, 255, 1);
+	color: rgb(46, 131, 255);
 }
 
 #tree span input {
 	width: 50%;
-	background-color: rgba(46, 131, 255, .2);
+	background-color: rgb(213, 240, 255);
 	font-size: 1em;
 	border: none;
 }
@@ -105,30 +105,19 @@ div.ui-dialog {
 #tree a.visible, 
 #tree a.visible.true { background-position: -80px -142px; }
 #tree a.visible.false { background-position: -112px -142px; }
-
 #tree a.open, 
 #tree a.open.true { background-position: -64px -14px; }
 #tree a.open.false { background-position: -32px -14px; }
-
 #tree a.delete { background-position: -80px -125px; }
-
-.waypoints {
-	counter-reset: wps;
-}
-
-.waypoints span:after {
-	content: "wp #" counter(wps);
-	counter-increment: wps;
-}
 
 #actions {
 	position: absolute;
+	margin-top: 5px;
 	width: 100%;
 }
 
 #buttonset {
-	width: 96px;
-	padding: 5px;
+  width: 96px;
 	margin: 0 auto;
 }
 
@@ -139,7 +128,7 @@ div.ui-dialog {
 
 #buttonset .selected {
 	border: 1px solid #2e83ff;
-	background: rgba(46, 131, 255, .6) none 50% 50% repeat-x;
+	background: rgb(129, 180, 255) none 50% 50% repeat-x;
 }
 
 #buttonset .marker-icon,
@@ -192,7 +181,8 @@ div.ui-dialog {
 }
 
 .save {
-	float: right;
+	position: absolute;
+	right: 10px;
 }
 
 #load-dialog ul,
@@ -204,7 +194,8 @@ div.ui-dialog {
 #save-dialog li{
   list-style-type: none;
   position: relative;
-  margin: 15px;
+  margin: 5px 10px;
+  padding: 5px;
 }
 #load-dialog li a,
 #save-dialog li a{
@@ -215,23 +206,24 @@ div.ui-dialog {
   background-repeat: no-repeat; 
   vertical-align: center;
 }
-#load-new{
+#load-new a{
   background-image: url(images/empty.png); 
 }
-#load-json,
-#save-json{
+#load-json a,
+#save-json a{
   background-image: url(images/json.png); 
 }
-#load-upload{
-  background-image: url(images/upload.png); 
-}
-#save-download{
+#save-download a{
   background-image: url(images/download.png); 
 }
-#load-file{
+#load-upload a{
+  background-image: url(images/upload.png); 
+}
+#load-upload input{
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 48px;
   opacity: 0;
+  filter: alpha(opacity = 0);
   cursor: pointer;
 }

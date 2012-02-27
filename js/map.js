@@ -83,12 +83,23 @@ var MM = (function(){
         }
 	    });
 		  
-		  $('#save-json').click(function(){
+		  $('#save-json a').click(function(){
         displayJSON(createJSON());
         return false;
       });
 		  
-		  $('#save-download').click(function(){
+		  // not supported by IE 6 + 7
+	    if($.browser.msie && $.browser.version.charAt(0) < 8){
+	      $('#save-download').css({backgroundColor: '#fdd'});
+	      $('#save-download a')
+	        .html('Download JSON is <b>not supported</b> by IE')
+	        .click(function() {
+            return false;
+          });
+	      return;
+	    }
+	    
+		  $('#save-download a').click(function(){
         var uri = 'data:application/octet-stream,' + encodeURIComponent(createJSON());
         var newWindow = window.open(uri);
         closeSaveDialog();
@@ -123,7 +134,7 @@ var MM = (function(){
 			loadDialog.remove();
 		};
 		
-		$('#load-new').click(function(){
+		$('#load-new a').click(function(){
 			var empty = {
 			  type: 'layer',
 			  name: 'root',
@@ -133,7 +144,7 @@ var MM = (function(){
 			onComplete(empty);
 		});
 		
-		$('#load-json').click(function(){
+		$('#load-json a').click(function(){
 			var remove = function(){
 				$(this).dialog('destroy');
 				$(this).remove();
@@ -163,8 +174,15 @@ var MM = (function(){
 			
 		});
 		
-		// for chrome: File-API only works when served by web-server
-		$('#load-file').change(function(evt){
+		if($.browser.msie){
+      $('#load-upload').css({backgroundColor: '#fdd'});
+		  $('#load-upload input').remove();
+      $('#load-upload a').html('Upload JSON is <b>not supported</b> by IE');
+      return;
+		}
+		
+		// chrome: File-API only works when served by web-server
+		$('#load-upload input').change(function(evt){
 		  if(!window.File || !window.FileReader || !window.FileList){
         alert('Error: The File-API is not supported by your browser!');
         return;
