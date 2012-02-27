@@ -4,6 +4,8 @@ MyMaps is a web application, that allows users to annotate a personal world map
 with interesting places (ie: where friends live) 
 and important routes (ie: fastest way to work).
 
+![Screenshot](https://github.com/FelixHoer/MyMaps/raw/master/screenshot.jpg)
+
 # Install & Usage
 
 __For local use__, download the project and point your browser at `index.html`.
