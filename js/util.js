@@ -22,29 +22,32 @@ var override = function(obj, nu){
 };
 var extend = override;
 
-var combine = function(obj, sec){
-  obj = obj || {};
-
-  for(var key in sec)
-    if(isFunction(obj[key]) && isFunction(sec[key]))
-      obj[key] = obj[key].chain(sec[key]);
-    else
-      obj[key] = sec[key];
-
-  return obj;
-};
-
-Function.prototype.chain = function(f){
-  var that = this;
-  return function(){
-    f.apply(null, arguments);
-    that.apply(null, arguments);
+var combine = (function(){
+  
+  var chain = function(oldf, newf){
+    return function(){
+      newf.apply(null, arguments);
+      oldf.apply(null, arguments);
+    };
   };
-};
 
-var isFunction = function(f){
-  return f && typeof f === "function";
-};
+  var isFunction = function(f){
+    return f && typeof f === "function";
+  };
+  
+  return function(obj, sec){
+    obj = obj || {};
+
+    for(var key in sec)
+      if(isFunction(obj[key]) && isFunction(sec[key]))
+        obj[key] = chain(obj[key], sec[key]);
+      else
+        obj[key] = sec[key];
+
+    return obj;
+  };
+  
+})();
 
 var falsy = function(){
   var chain = arguments;
